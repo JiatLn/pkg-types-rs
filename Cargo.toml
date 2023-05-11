@@ -9,7 +9,7 @@ repository = "https://www.github.com/JiatLn/pkg-types-rs"
 homepage = "https://crates.io/crates/pkg-types"
 documentation = "https://docs.rs/pkg-types"
 readme = "README.md"
-keywords = ["package.json", "pkg-types"]
+keywords = ["package", "pkg-types"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
