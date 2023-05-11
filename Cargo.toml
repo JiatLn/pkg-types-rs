@@ -1,0 +1,18 @@
+[package]
+name = "pkg-types"
+version = "0.1.0"
+edition = "2021"
+description = "This is a rust version pkg-types for `package.json` and `tsconfig.json`."
+license = "MIT"
+authors = ["JiatLn <lne128gene980@163.com>"]
+repository = "https://www.github.com/JiatLn/pkg-types-rs"
+homepage = "https://crates.io/crates/pkg-types"
+documentation = "https://docs.rs/pkg-types"
+readme = "README.md"
+keywords = ["package.json", "pkg-types"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.87"
