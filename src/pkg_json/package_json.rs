@@ -1,10 +1,11 @@
 use super::{
     BinField, BugsField, ExportsField, ManField, PackageJsonPerson, RepositoryField, TypeEnum,
 };
+use crate::cacher::Cacher;
 use serde::Deserialize;
 use std::{collections::HashMap, error::Error, fs, io::BufReader, path::Path};
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageJson {
     /// The name is what your thing is called.
@@ -141,5 +142,13 @@ impl PackageJson {
         let pkg_json: PackageJson = serde_json::from_reader(reader)?;
 
         Ok(pkg_json)
+    }
+
+    pub fn read_package_json() -> Result<Self, Box<dyn Error>> {
+        let path = std::env::current_dir()?.join("package.json");
+
+        let mut cacher = Cacher::new();
+
+        Ok(cacher.get(&path))
     }
 }
