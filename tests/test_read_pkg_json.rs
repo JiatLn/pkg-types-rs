@@ -11,7 +11,8 @@ fn test_read_pkg_json_from_path() {
 #[test]
 fn test_read_pkg_json_from_current_dir() {
     fs::write("package.json", r#"{"name": "pkg-name"}"#).unwrap();
-    let pkg = PackageJson::read_package_json();
+    let pkg_json = PackageJson::read_package_json().unwrap();
     fs::remove_file("package.json").unwrap();
-    assert!(pkg.is_ok());
+    let name = pkg_json.name.unwrap();
+    assert_eq!(name, "pkg-name");
 }

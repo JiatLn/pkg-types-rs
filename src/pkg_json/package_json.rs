@@ -1,7 +1,6 @@
 use super::{
     BinField, BugsField, ExportsField, ManField, PackageJsonPerson, RepositoryField, TypeEnum,
 };
-use crate::cacher::Cacher;
 use serde::Deserialize;
 use std::{collections::HashMap, error::Error, fs, io::BufReader, path::Path};
 
@@ -146,9 +145,6 @@ impl PackageJson {
 
     pub fn read_package_json() -> Result<Self, Box<dyn Error>> {
         let path = std::env::current_dir()?.join("package.json");
-
-        let mut cacher = Cacher::new();
-
-        Ok(cacher.get(&path))
+        PackageJson::from_path(path)
     }
 }
